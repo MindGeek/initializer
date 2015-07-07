@@ -1,29 +1,29 @@
 #!/bin/bash
 
-# This script try to deplay things onto your machine.
+# This script try to deploy things onto your machine.
 
 work_dir=$(dirname $0)
 home_dir=$(cd ~ && pwd)
-deplay_source_dir=source
+deploy_source_dir=source
 
-function deplay()
+function deploy()
 {
 	local src=$1
 	local tar=$2
-	cmd="cp $deplay_source_dir/$src $tar"
+	cmd="cp $deploy_source_dir/$src $tar"
 	log_notice $cmd
 	eval $cmd
 }
 
-function deplay_one_file()
+function deploy_one_file()
 {
 	local tar_name="$@"
 	local tar="$home_dir/$tar_name"
 
 	if [ ! -f $tar ]
 	then
-		deplay $tar_name $tar
-		log_notice "deplay $tar done."
+		deploy $tar_name $tar
+		log_notice "deploy $tar done."
 	else
 		log_warning "$tar already exists, I won't cover it!"
 	fi
@@ -51,14 +51,14 @@ function log_notice()
 
 
 #########################
-# deplay
+# deploy
 #########################
 
 # bash
-deplay_one_file .bashrc
+deploy_one_file .bashrc
 
 # vim
-deplay_one_file .vimrc
+deploy_one_file .vimrc
 
 
 #########################
