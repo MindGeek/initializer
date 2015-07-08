@@ -60,6 +60,8 @@ deploy_one_file .bashrc
 # vim
 deploy_one_file .vimrc
 
+mkdir -p $home_dir/.vimbackup
+
 
 #########################
 # source

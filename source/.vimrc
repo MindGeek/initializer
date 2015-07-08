@@ -1,36 +1,25 @@
-" Indent Python in the Google way.
+set expandtab
+set tabstop=4
+set shiftwidth=4
 
-setlocal indentexpr=GetGooglePythonIndent(v:lnum)
+set number
 
-let s:maxoff = 50 " maximum number of lines to look backwards.
+set fileencodings=utf-8,gb18030
+set encoding=utf-8
+"set termencoding=utf-8
+set termencoding=gb18030
+set fileformats=unix
+"set encoding=prc
 
-function GetGooglePythonIndent(lnum)
+set backup " make backup file and leave it around 
+set backupdir=~/.vimbackup " where to put backup file 
 
-  " Indent inside parens.
-  " Align with the open paren unless it is at the end of the line.
-  " E.g.
-  "   open_paren_not_at_EOL(100,
-  "                         (200,
-  "                          300),
-  "                         400)
-  "   open_paren_at_EOL(
-  "       100, 200, 300, 400)
-  call cursor(a:lnum, 1)
-  let [par_line, par_col] = searchpairpos('(\|{\|\[', '', ')\|}\|\]', 'bW',
-        \ "line('.') < " . (a:lnum - s:maxoff) . " ? dummy :"
-        \ . " synIDattr(synID(line('.'), col('.'), 1), 'name')"
-        \ . " =~ '\\(Comment\\|String\\)$'")
-  if par_line > 0
-    call cursor(par_line, 1)
-    if par_col != col("$") - 1
-      return par_col
-    endif
-  endif
+set mouse=
 
-  " Delegate the rest to the original function.
-  return GetPythonIndent(a:lnum)
+" highlight line
+"set cursorline
+"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=white guifg=white
 
-endfunction
-
-let pyindent_nested_paren="&sw*2"
-let pyindent_open_paren="&sw*2"
+" highlight column
+"set cursorcolumn
+"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=white guifg=white
