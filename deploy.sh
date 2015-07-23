@@ -57,6 +57,9 @@ function log_notice()
 # bash
 deploy_one_file .bashrc
 
+# zsh
+deploy_one_file .zshrc
+
 # vim
 deploy_one_file .vimrc
 
