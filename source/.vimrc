@@ -2,6 +2,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 
+syntax on
 set number
 
 set fileencodings=utf-8,gb18030

@@ -20,7 +20,7 @@ function deploy_one_file()
 	local tar_name="$@"
 	local tar="$home_dir/$tar_name"
 
-	if [ ! -f $tar ]
+	if [[ ! -f $tar || $force == 1 ]]
 	then
 		deploy $tar_name $tar
 		log_notice "deploy $tar done."
@@ -49,6 +49,17 @@ function log_notice()
 	echo "NOTICE:	$msg"
 }
 
+#########################
+# checking argv
+#########################
+force=$1
+if [[ $force == "-f" ]]
+then
+    force=1
+else 
+    force=0
+fi
+
 
 #########################
 # deploy
@@ -56,20 +67,21 @@ function log_notice()
 
 # bash
 deploy_one_file .bashrc
+deploy_one_file .bash_profile
 
 # zsh
 deploy_one_file .zshrc
 
 # vim
 deploy_one_file .vimrc
-
 mkdir -p $home_dir/.vimbackup
 
 
 #########################
-# source
+# source, no use
 #########################
-source $home_dir/.bashrc
+echo "You should run:"
+echo source $home_dir/.bash_profile
 
 
 
