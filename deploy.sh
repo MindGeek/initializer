@@ -76,6 +76,9 @@ deploy_one_file .zshrc
 deploy_one_file .vimrc
 mkdir -p $home_dir/.vimbackup
 
+# git
+deploy_one_file .gitconfig
+
 
 #########################
 # source, no use
