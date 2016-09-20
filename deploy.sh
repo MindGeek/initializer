@@ -68,6 +68,7 @@ fi
 # bash
 deploy_one_file .bashrc
 deploy_one_file .bash_profile
+deploy_one_file .bash_git_ps1.sh
 
 # zsh
 deploy_one_file .zshrc
