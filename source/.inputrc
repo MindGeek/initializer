@@ -1,0 +1,5 @@
+
+# set vi mode in command line editing
+set editing-mode vi
+set keymap vi-command
+set show-mode-in-prompt on
