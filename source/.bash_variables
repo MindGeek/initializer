@@ -1,0 +1,11 @@
+PATH=~/:$PATH
+
+export PYENV_ROOT="$HOME/projects/github/pkg/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# for voyaver on Ubuntu 16.04
+source /opt/ros/kinetic/setup.bash
+
+export v="/home/mg/projects/didi/voyager"
+export EDITOR=/usr/bin/vim
