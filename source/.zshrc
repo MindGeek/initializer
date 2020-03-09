@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
- export PATH=$HOME/bin:/usr/local/bin:$PATH
+ export PATH=/usr/lib/ccache:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
   export ZSH="/home/mg/.oh-my-zsh"
@@ -59,7 +59,7 @@ ZSH_THEME="amuse"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  jump
+  autojump
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -95,6 +95,10 @@ alias ll='ls -l'
 alias la='ls -a'
 alias grep="grep --color=auto"
 alias vi='vim'
+alias ss='[[ -s devel/setup.zsh ]] && source devel/setup.zsh && echo "sourced devel/setup.zsh" || [[ -s ../build_$(basename $PWD)/devel/setup.zsh ]] && source ../build_$(basename $PWD)/devel/setup.zsh && echo "sourced ../build_$(basename $PWD)/devel/setup.zsh"'
+alias ssb='ss && cd ../build_$(basename $PWD) && make -j10 ; cd -'
+alias vrc='vim ~/.vimrc'
+alias zrc='vim ~/.zshrc && source ~/.zshrc'
 
 
 # other settings
@@ -102,13 +106,25 @@ source $HOME/projects/github/pkg/zsh-git-prompt/zshrc.sh
 # an example prompt
 PROMPT='%B%~%b$(git_super_status) %# '
 
+# Config git diff tool.
+git config diff.tool vimdiff
 
 # autojump
 #[[ -s /home/mg/.autojump/etc/profile.d/autojump.sh ]] && source /home/mg/.autojump/etc/profile.d/autojump.sh
 
 # incr
-source ~/.oh-my-zsh/plugins/incr*.zsh
+# source ~/.oh-my-zsh/plugins/incr*.zsh
 
 # ros setup
-[[ -s /opt/ros/kinetic/setup.zsh ]] && source /opt/ros/kinetic/setup.zsh
+[[ -s /opt/ros/melodic/setup.zsh ]] && source /opt/ros/melodic/setup.zsh
 
+# autojump
+[[ -s /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
+
+
+#enable ccache
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# FZF 
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'

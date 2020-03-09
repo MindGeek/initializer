@@ -91,6 +91,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias v='ls -lrt'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -104,9 +105,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-if [ -f ~/.bash_variables ]; then
-    . ~/.bash_variables
-fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -118,11 +116,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH=~/CRClientTools/arcanist/bin:$PATH;
-export ARCDIR=~/CRClientTools/arcanist/bin;
 
-# autojump 
-[[ -s /home/mg/.autojump/etc/profile.d/autojump.sh ]] && source /home/mg/.autojump/etc/profile.d/autojump.sh
+source /opt/ros/melodic/setup.bash
 
-# ros setup
-[[ -s /opt/ros/kinetic/setup.bash ]] && source /opt/ros/kinetic/setup.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
